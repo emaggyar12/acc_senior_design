@@ -1,0 +1,12 @@
+*.egg-info
+build
+*.so
+.DS_Store
+cmake-build-debug
+.idea/
+__pycache__/
+scripts/graphs/
+models/
+cpt/
+dist/
+.ipynb_checkpoints

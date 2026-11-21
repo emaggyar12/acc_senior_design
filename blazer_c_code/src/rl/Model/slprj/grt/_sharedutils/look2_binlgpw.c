@@ -1,0 +1,90 @@
+/*
+ * look2_binlgpw.c
+ *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
+ * Code generation for model "HSC_Model".
+ *
+ * Model version              : 1.101
+ * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
+ * C source code generated on : Thu Feb 17 16:37:42 2022
+ * Created for block: HSC_Model
+ */
+
+#include "rtwtypes.h"
+#include "look2_binlgpw.h"
+
+real_T look2_binlgpw(real_T u0, real_T u1, const real_T bp0[], const real_T bp1[],
+                     const real_T table[], const uint32_T maxIndex[], uint32_T
+                     stride)
+{
+  real_T fractions[2];
+  real_T yL_1d;
+  uint32_T iRght;
+  uint32_T iLeft;
+  uint32_T bpIdx;
+  uint32_T iLeft_0;
+
+  /* Column-major Lookup 2-D
+     Search method: 'binary'
+     Use previous index: 'off'
+     Interpolation method: 'Linear point-slope'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'on'
+   */
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'on'
+   */
+  /* Binary Search */
+  bpIdx = maxIndex[0U] >> 1U;
+  iLeft = 0U;
+  iRght = maxIndex[0U];
+  while (iRght - iLeft > 1U) {
+    if (u0 < bp0[bpIdx]) {
+      iRght = bpIdx;
+    } else {
+      iLeft = bpIdx;
+    }
+
+    bpIdx = (iRght + iLeft) >> 1U;
+  }
+
+  fractions[0U] = (u0 - bp0[iLeft]) / (bp0[iLeft + 1U] - bp0[iLeft]);
+
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'on'
+   */
+  /* Binary Search */
+  bpIdx = maxIndex[1U] >> 1U;
+  iLeft_0 = 0U;
+  iRght = maxIndex[1U];
+  while (iRght - iLeft_0 > 1U) {
+    if (u1 < bp1[bpIdx]) {
+      iRght = bpIdx;
+    } else {
+      iLeft_0 = bpIdx;
+    }
+
+    bpIdx = (iRght + iLeft_0) >> 1U;
+  }
+
+  /* Column-major Interpolation 2-D
+     Interpolation method: 'Linear point-slope'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Overflow mode: 'portable wrapping'
+   */
+  bpIdx = iLeft_0 * stride + iLeft;
+  yL_1d = (table[bpIdx + 1U] - table[bpIdx]) * fractions[0U] + table[bpIdx];
+  bpIdx += stride;
+  return (((table[bpIdx + 1U] - table[bpIdx]) * fractions[0U] + table[bpIdx]) -
+          yL_1d) * ((u1 - bp1[iLeft_0]) / (bp1[iLeft_0 + 1U] - bp1[iLeft_0])) +
+    yL_1d;
+}
