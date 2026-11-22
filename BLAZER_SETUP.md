@@ -1,6 +1,16 @@
 # Blazer Setup
 
-This is a markdown file for setting up the Chevy blazer simulation wrapper for your local computer. If you run into issues setting up the code, reach out to aharsha@vols.utk.edu
+This is a markdown file for setting up the Chevy blazer C CODE simulation wrapper for your local computer. If you run into issues setting up the code, reach out to aharsha@vols.utk.edu
+
+‼️‼️‼️‼️VERY IMPORTANT NOTE‼️‼️‼️‼️: 
+
+These is the setup instructions for the blazer_c_code, which is only if you want to set up the low-level version of the blazer interface code. 
+
+IF YOU ARE IN SENIOR DESIGN, THESE ARE THE WRONG SETUP INSTRUCTIONS GO TO THE OTHER SETUP MD
+
+Essentially, blazer_c_code lets you send POWER instructions to the car model, which then outputs velocity, etc. If you want to train ACC algorithm, you want to send PEDAL COMMANDS to the model, which is done in the BLAZER INTERFACE 2 CODE. the setup instructions for that are in the other markdown file.
+
+IF INSTALLING BLAZER C CODE MAKE SURE THAT IT IS IN ANOTHER VIRTUAL ENVIRONMENT THAN YOUR BLAZER INTERFACE. The import commands differ by a capital letter which can cause serious issues if you mistakenly import the wrong model.
 
 ---
 
@@ -79,7 +89,7 @@ python -m pip install "numpy<2" scipy "gym==0.26.2"
 python -m pip install -e .
 ```
 
-> You may be able to just call "pip install" or "pip3 install" depending on how your python env is set up. You may also have to do "python3 -m pip3 install ..." depending on what sorts of errors you get from your machine.
+> You may be able to just call "pip install" or "pip3 install" depending on how your python env is set up. You may also have to do "python3 -m pip install ..." depending on what sorts of errors you get from your machine.
 
 ---
 

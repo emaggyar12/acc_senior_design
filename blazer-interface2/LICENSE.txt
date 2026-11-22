@@ -1,0 +1,12 @@
+No License
+
+(C) 2022 Landon Harris - All Rights Reserved
+
+Users added to the mabe2.mabe.utk.edu/cavs/blazer-interface2 repository are 
+permitted to read, modify, and run code within this package. Usage of this package
+for purposes outside of its intended design is prohibited without express permission.
+Distribution of this work is prohibited under copyright. 
+
+Work designed using this package that relies on its interface is the intelectual 
+property of the respective authors and is not subject to this license, so long 
+as it does not duplicate or distribute any parts of this package. 
