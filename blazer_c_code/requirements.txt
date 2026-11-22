@@ -1,3 +1,3 @@
-numpy
+﻿numpy
 scipy
-gym
+gymnasium>=1.0
